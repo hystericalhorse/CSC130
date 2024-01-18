@@ -9,6 +9,13 @@ namespace Nim
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
+		bool isPlaying = false;
+		int turn = 0;
+
+		AIOpponent opponent = new();
+		Board<int> board = new();
+
+		#region MonoGame
 		public GameManager()
 		{
 			_graphics = new GraphicsDeviceManager(this);
@@ -48,5 +55,22 @@ namespace Nim
 
 			base.Draw(gameTime);
 		}
+		#endregion
+		#region GameManager
+		public void Menu()
+		{
+
+		}
+
+		public void Play()
+		{
+
+		}
+
+		public void GameOver()
+		{
+
+		}
+		#endregion
 	}
 }

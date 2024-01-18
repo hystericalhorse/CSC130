@@ -1,3 +1,2 @@
-﻿
-using var game = new Nim.GameManager();
+﻿using var game = new Nim.GameManager();
 game.Run();
