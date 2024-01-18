@@ -30,11 +30,14 @@
 *.ide
 *.ide-shm
 *.ide-wal
+*vsidx
+*.metadata.*.bin
 ipch/
 obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+.vs/
 Ankh.NoLoad
 
 #Tooling
