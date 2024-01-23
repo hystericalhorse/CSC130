@@ -13,3 +13,1311 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin DigitalUISounds/Back_Option_One/Back_Option_One_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_One/Back_Option_One_v1_wav.wav
+
+#begin DigitalUISounds/Back_Option_One/Back_Option_One_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_One/Back_Option_One_v2_wav.wav
+
+#begin DigitalUISounds/Back_Option_One/Back_Option_One_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_One/Back_Option_One_v3_wav.wav
+
+#begin DigitalUISounds/Back_Option_Two/Back_Option_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_Two/Back_Option_Two_v1_wav.wav
+
+#begin DigitalUISounds/Back_Option_Two/Back_Option_Two_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_Two/Back_Option_Two_v2_wav.wav
+
+#begin DigitalUISounds/Back_Option_Two/Back_Option_Two_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Back_Option_Two/Back_Option_Two_v3_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Four/Equip_Equipment_Four_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Four/Equip_Equipment_Four_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Four/Select_Equipment_Four_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Four/Select_Equipment_Four_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_One/Equip_Equipment_One_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_One/Equip_Equipment_One_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_One/Selection_Equipment_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_One/Selection_Equipment_Two_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Three/Equip_Equipment_Three_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Three/Equip_Equipment_Three_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Three/Select_Equipment_Three_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Three/Select_Equipment_Three_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Two/Equip_Equipment_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Two/Equip_Equipment_Two_v1_wav.wav
+
+#begin DigitalUISounds/Buy_And_Equip_Two/Selection_Equipment_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Buy_And_Equip_Two/Selection_Equipment_Two_v1_wav.wav
+
+#begin DigitalUISounds/Change_Option_Four/Change_Option_Four_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Four/Change_Option_Four_v1_wav.wav
+
+#begin DigitalUISounds/Change_Option_Four/Change_Option_Four_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Four/Change_Option_Four_v2_wav.wav
+
+#begin DigitalUISounds/Change_Option_Four/Change_Option_Four_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Four/Change_Option_Four_v3_wav.wav
+
+#begin DigitalUISounds/Change_Option_One/Change_Option_One_v1_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_One/Change_Option_One_v1_Wav.wav
+
+#begin DigitalUISounds/Change_Option_One/Change_Option_One_v2_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_One/Change_Option_One_v2_Wav.wav
+
+#begin DigitalUISounds/Change_Option_One/Change_Option_One_v3_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_One/Change_Option_One_v3_Wav.wav
+
+#begin DigitalUISounds/Change_Option_Three/Change_Option_Three_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Three/Change_Option_Three_v1_wav.wav
+
+#begin DigitalUISounds/Change_Option_Three/Change_Option_Three_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Three/Change_Option_Three_v2_wav.wav
+
+#begin DigitalUISounds/Change_Option_Three/Change_Option_Three_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Three/Change_Option_Three_v3_wav.wav
+
+#begin DigitalUISounds/Change_Option_Two/Change_Option_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Two/Change_Option_Two_v1_wav.wav
+
+#begin DigitalUISounds/Change_Option_Two/Change_Option_Two_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Two/Change_Option_Two_v2_wav.wav
+
+#begin DigitalUISounds/Change_Option_Two/Change_Option_Two_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Change_Option_Two/Change_Option_Two_v3_wav.wav
+
+#begin DigitalUISounds/Click_Change_Option/Click_Change_Option_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Change_Option/Click_Change_Option_v1_wav.wav
+
+#begin DigitalUISounds/Click_Change_Option/Click_Change_Option_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Change_Option/Click_Change_Option_v2_wav.wav
+
+#begin DigitalUISounds/Click_Change_Option/Click_Change_Option_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Change_Option/Click_Change_Option_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Five/Click_Confirmation_Five_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Four/Click_Confirmation_Four_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_One/Click_Confirmation_One_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v4_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v4_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v5_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Seven/Click_Confirmation_Seven_v5_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Six/Click_Confirmation_Six_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Three/Click_Confirmation_Three_v3_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v1_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v2_wav.wav
+
+#begin DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_Confirmation_Two/Click_Confirmation_Two_v3_wav.wav
+
+#begin DigitalUISounds/Click_v1_wav/Click_v1_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v1_wav/Click_v1_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v1_wav/Click_v1_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v1_wav/Click_v1_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v1_wav/Click_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v1_wav/Click_v1_wav.wav
+
+#begin DigitalUISounds/Click_v10_wav/Click_v10_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v10_wav/Click_v10_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v10_wav/Click_v10_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v10_wav/Click_v10_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v10_wav/Click_v10_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v10_wav/Click_v10_wav.wav
+
+#begin DigitalUISounds/Click_v11_wav/Click_v11_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v11_wav/Click_v11_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v11_wav/Click_v11_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v11_wav/Click_v11_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v11_wav/Click_v11_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v11_wav/Click_v11_wav.wav
+
+#begin DigitalUISounds/Click_v12_wav/Click_v12_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v12_wav/Click_v12_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v12_wav/Click_v12_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v12_wav/Click_v12_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v12_wav/Click_v12_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v12_wav/Click_v12_wav.wav
+
+#begin DigitalUISounds/Click_v13_wav/Click_v13_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v13_wav/Click_v13_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v13_wav/Click_v13_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v13_wav/Click_v13_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v13_wav/Click_v13_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v13_wav/Click_v13_wav.wav
+
+#begin DigitalUISounds/Click_v14_wav/Click_v14_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v14_wav/Click_v14_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v14_wav/Click_v14_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v14_wav/Click_v14_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v14_wav/Click_v14_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v14_wav/Click_v14_wav.wav
+
+#begin DigitalUISounds/Click_v15_wav/Click_v15_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v15_wav/Click_v15_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v15_wav/Click_v15_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v15_wav/Click_v15_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v15_wav/Click_v15_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v15_wav/Click_v15_wav.wav
+
+#begin DigitalUISounds/Click_v16_wav/Click_v16_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v16_wav/Click_v16_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v16_wav/Click_v16_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v16_wav/Click_v16_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v16_wav/Click_v16_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v16_wav/Click_v16_wav.wav
+
+#begin DigitalUISounds/Click_v17_wav/Click_v17_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v17_wav/Click_v17_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v17_wav/Click_v17_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v17_wav/Click_v17_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v17_wav/Click_v17_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v17_wav/Click_v17_wav.wav
+
+#begin DigitalUISounds/Click_v18_wav/Click_v18_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v18_wav/Click_v18_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v18_wav/Click_v18_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v18_wav/Click_v18_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v18_wav/Click_v18_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v18_wav/Click_v18_wav.wav
+
+#begin DigitalUISounds/Click_v19_wav/Click_v19_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v19_wav/Click_v19_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v19_wav/Click_v19_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v19_wav/Click_v19_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v19_wav/Click_v19_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v19_wav/Click_v19_wav.wav
+
+#begin DigitalUISounds/Click_v2_wav/Click_v2_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v2_wav/Click_v2_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v2_wav/Click_v2_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v2_wav/Click_v2_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v2_wav/Click_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v2_wav/Click_v2_wav.wav
+
+#begin DigitalUISounds/Click_v20_wav/Click_v20_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v20_wav/Click_v20_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v20_wav/Click_v20_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v20_wav/Click_v20_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v20_wav/Click_v20_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v20_wav/Click_v20_wav.wav
+
+#begin DigitalUISounds/Click_v3_wav/Click_v3_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v3_wav/Click_v3_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v3_wav/Click_v3_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v3_wav/Click_v3_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v3_wav/Click_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v3_wav/Click_v3_wav.wav
+
+#begin DigitalUISounds/Click_v4_wav/Click_v4_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v4_wav/Click_v4_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v4_wav/Click_v4_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v4_wav/Click_v4_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v4_wav/Click_v4_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v4_wav/Click_v4_wav.wav
+
+#begin DigitalUISounds/Click_v5_wav/Click_v5_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v5_wav/Click_v5_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v5_wav/Click_v5_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v5_wav/Click_v5_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v5_wav/Click_v5_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v5_wav/Click_v5_wav.wav
+
+#begin DigitalUISounds/Click_v6_wav/Click_v6_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v6_wav/Click_v6_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v6_wav/Click_v6_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v6_wav/Click_v6_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v6_wav/Click_v6_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v6_wav/Click_v6_wav.wav
+
+#begin DigitalUISounds/Click_v7_wav/Click_v7_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v7_wav/Click_v7_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v7_wav/Click_v7_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v7_wav/Click_v7_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v7_wav/Click_v7_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v7_wav/Click_v7_wav.wav
+
+#begin DigitalUISounds/Click_v8_wav/Click_v8_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v8_wav/Click_v8_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v8_wav/Click_v8_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v8_wav/Click_v8_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v8_wav/Click_v8_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v8_wav/Click_v8_wav.wav
+
+#begin DigitalUISounds/Click_v9_wav/Click_v9_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v9_wav/Click_v9_variation_01_wav.wav
+
+#begin DigitalUISounds/Click_v9_wav/Click_v9_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v9_wav/Click_v9_variation_02_wav.wav
+
+#begin DigitalUISounds/Click_v9_wav/Click_v9_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Click_v9_wav/Click_v9_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Close_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Close_v1_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Close_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Close_v2_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Close_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Close_v3_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Close_v4_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Close_v4_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Open_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Open_v1_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Open_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Open_v2_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Open_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Open_v3_wav.wav
+
+#begin DigitalUISounds/Drop_Down_All/Drop_Down_Open_v4_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Drop_Down_All/Drop_Down_Open_v4_wav.wav
+
+#begin DigitalUISounds/Hover_All/Hover_v1_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Hover_All/Hover_v1_Wav.wav
+
+#begin DigitalUISounds/Hover_All/Hover_v2_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Hover_All/Hover_v2_Wav.wav
+
+#begin DigitalUISounds/Hover_All/Hover_v3_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Hover_All/Hover_v3_Wav.wav
+
+#begin DigitalUISounds/Hover_All/Hover_v4_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Hover_All/Hover_v4_Wav.wav
+
+#begin DigitalUISounds/Hover_All/Hover_v5_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Hover_All/Hover_v5_wav.wav
+
+#begin DigitalUISounds/Option_Change_v1/Option_Change_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v1/Option_Change_v1_wav.wav
+
+#begin DigitalUISounds/Option_Change_v1/Option_Change_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v1/Option_Change_v2_wav.wav
+
+#begin DigitalUISounds/Option_Change_v1/Option_Change_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v1/Option_Change_v3_wav.wav
+
+#begin DigitalUISounds/Option_Change_v10/Option_Change_v10_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v10/Option_Change_v10_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v10/Option_Change_v10_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v10/Option_Change_v10_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v10/Option_Change_v10_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v10/Option_Change_v10_wav.wav
+
+#begin DigitalUISounds/Option_Change_v11/Option_Change_v11_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v11/Option_Change_v11_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v11/Option_Change_v11_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v11/Option_Change_v11_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v11/Option_Change_v11_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v11/Option_Change_v11_wav.wav
+
+#begin DigitalUISounds/Option_Change_v12/Option_Change_v12_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v12/Option_Change_v12_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v12/Option_Change_v12_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v12/Option_Change_v12_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v12/Option_Change_v12_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v12/Option_Change_v12_wav.wav
+
+#begin DigitalUISounds/Option_Change_v13/Option_Change_v13_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v13/Option_Change_v13_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v13/Option_Change_v13_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v13/Option_Change_v13_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v13/Option_Change_v13_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v13/Option_Change_v13_wav.wav
+
+#begin DigitalUISounds/Option_Change_v14/Option_Change_v14_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v14/Option_Change_v14_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v14/Option_Change_v14_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v14/Option_Change_v14_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v14/Option_Change_v14_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v14/Option_Change_v14_wav.wav
+
+#begin DigitalUISounds/Option_Change_v15/Option_Change_v15_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v15/Option_Change_v15_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v15/Option_Change_v15_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v15/Option_Change_v15_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v15/Option_Change_v15_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v15/Option_Change_v15_wav.wav
+
+#begin DigitalUISounds/Option_Change_v16/Option_Change_v16_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v16/Option_Change_v16_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v16/Option_Change_v16_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v16/Option_Change_v16_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v16/Option_Change_v16_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v16/Option_Change_v16_wav.wav
+
+#begin DigitalUISounds/Option_Change_v17/Option_Chage_v17_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v17/Option_Chage_v17_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v17/Option_Chage_v17_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v17/Option_Chage_v17_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v17/Option_Chage_v17_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v17/Option_Chage_v17_wav.wav
+
+#begin DigitalUISounds/Option_Change_v18/Option_Change_v18_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v18/Option_Change_v18_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v18/Option_Change_v18_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v18/Option_Change_v18_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v18/Option_Change_v18_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v18/Option_Change_v18_wav.wav
+
+#begin DigitalUISounds/Option_Change_v19/Option_Change_v19_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v19/Option_Change_v19_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v19/Option_Change_v19_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v19/Option_Change_v19_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v19/Option_Change_v19_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v19/Option_Change_v19_wav.wav
+
+#begin DigitalUISounds/Option_Change_v2/Option_Change_v2_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v2/Option_Change_v2_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v2/Option_Change_v2_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v2/Option_Change_v2_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v2/Option_Change_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v2/Option_Change_v2_wav.wav
+
+#begin DigitalUISounds/Option_Change_v20/Option_Change_v20_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v20/Option_Change_v20_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v20/Option_Change_v20_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v20/Option_Change_v20_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v20/Option_Change_v20_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v20/Option_Change_v20_wav.wav
+
+#begin DigitalUISounds/Option_Change_v21/Option_Change_v21_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v21/Option_Change_v21_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v21/Option_Change_v21_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v21/Option_Change_v21_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v21/Option_Change_v21_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v21/Option_Change_v21_wav.wav
+
+#begin DigitalUISounds/Option_Change_v22/Option_Change_v22_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v22/Option_Change_v22_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v22/Option_Change_v22_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v22/Option_Change_v22_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v22/Option_Change_v22_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v22/Option_Change_v22_wav.wav
+
+#begin DigitalUISounds/Option_Change_v23/Option_Change_v23_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v23/Option_Change_v23_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v23/Option_Change_v23_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v23/Option_Change_v23_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v23/Option_Change_v23_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v23/Option_Change_v23_wav.wav
+
+#begin DigitalUISounds/Option_Change_v3/Option_Change_v3_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v3/Option_Change_v3_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v3/Option_Change_v3_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v3/Option_Change_v3_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v3/Option_Change_v3_Wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v3/Option_Change_v3_Wav.wav
+
+#begin DigitalUISounds/Option_Change_v4/Option_Change_v4_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v4/Option_Change_v4_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v4/Option_Change_v4_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v4/Option_Change_v4_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v4/Option_Change_v4_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v4/Option_Change_v4_wav.wav
+
+#begin DigitalUISounds/Option_Change_v5/Option_Change_v5_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v5/Option_Change_v5_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v5/Option_Change_v5_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v5/Option_Change_v5_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v5/Option_Change_v5_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v5/Option_Change_v5_wav.wav
+
+#begin DigitalUISounds/Option_Change_v6/Option_Change_v6_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v6/Option_Change_v6_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v6/Option_Change_v6_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v6/Option_Change_v6_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v6/Option_Change_v6_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v6/Option_Change_v6_wav.wav
+
+#begin DigitalUISounds/Option_Change_v7/Option_Change_v7_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v7/Option_Change_v7_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v7/Option_Change_v7_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v7/Option_Change_v7_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v7/Option_Change_v7_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v7/Option_Change_v7_wav.wav
+
+#begin DigitalUISounds/Option_Change_v8/Option_Change_v8_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v8/Option_Change_v8_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v8/Option_Change_v8_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v8/Option_Change_v8_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v8/Option_Change_v8_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v8/Option_Change_v8_wav.wav
+
+#begin DigitalUISounds/Option_Change_v9/Option_Change_v9_variation_01_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v9/Option_Change_v9_variation_01_wav.wav
+
+#begin DigitalUISounds/Option_Change_v9/Option_Change_v9_variation_02_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v9/Option_Change_v9_variation_02_wav.wav
+
+#begin DigitalUISounds/Option_Change_v9/Option_Change_v9_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Option_Change_v9/Option_Change_v9_wav.wav
+
+#begin DigitalUISounds/Slide_One/Slide_One_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_One/Slide_One_v1_wav.wav
+
+#begin DigitalUISounds/Slide_One/Slide_One_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_One/Slide_One_v2_wav.wav
+
+#begin DigitalUISounds/Slide_One/Slide_One_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_One/Slide_One_v3_wav.wav
+
+#begin DigitalUISounds/Slide_Two/Slide_Two_v1_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_Two/Slide_Two_v1_wav.wav
+
+#begin DigitalUISounds/Slide_Two/Slide_Two_v2_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_Two/Slide_Two_v2_wav.wav
+
+#begin DigitalUISounds/Slide_Two/Slide_Two_v3_wav.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:DigitalUISounds/Slide_Two/Slide_Two_v3_wav.wav
+
+#begin Sprites/ChocochipCookieSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/ChocochipCookieSprite.png
+
+#begin Sprites/ChocochipCookieSpriteBigger.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/ChocochipCookieSpriteBigger.png
+
+#begin Sprites/ChocochipCookieSpriteSlightlyBigger.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/ChocochipCookieSpriteSlightlyBigger.png
+
+#begin Sprites/OatmealCookie.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/OatmealCookie.png
+
+#begin Sprites/OatmealCookieBigger.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/OatmealCookieBigger.png
+
+#begin Sprites/OatmealCookieBiggest.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/OatmealCookieBiggest.png
+
+#begin Sprites/SnickerDoodle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/SnickerDoodle.png
+
+#begin Sprites/SnickerDoodleBigger.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/SnickerDoodleBigger.png
+
+#begin Sprites/SnickerDoodleBiggest.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/SnickerDoodleBiggest.png
+
