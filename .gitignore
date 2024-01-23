@@ -66,3 +66,5 @@ monodroid*.msi
 *.VC.opendb
 
 artifacts/
+*.bin
+*.bin
