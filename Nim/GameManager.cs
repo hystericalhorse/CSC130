@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Nim
 {
@@ -10,10 +13,11 @@ namespace Nim
 		private SpriteBatch _spriteBatch;
 
 		bool isPlaying = false;
-		int turn = 0;
+		enum Turn { Player, Opponent }
+		Turn turn;
 
 		AIOpponent opponent = new();
-		Board<int> board = new();
+		Board<Cookie> board = new();
 
 		#region MonoGame
 		public GameManager()
@@ -26,6 +30,8 @@ namespace Nim
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+
+			Play();
 
 			base.Initialize();
 		}
@@ -43,6 +49,29 @@ namespace Nim
 				Exit();
 
 			// TODO: Add your update logic here
+			switch (turn)
+			{
+				case Turn.Player:
+					if (Keyboard.GetState().IsKeyDown(Keys.Q))
+					{
+						TakeFromPile(1, 0);
+						Debug.WriteLine(board.piles[0].Count());
+					}
+					if (Keyboard.GetState().IsKeyDown(Keys.W))
+					{
+						TakeFromPile(1, 1);
+						Debug.WriteLine(board.piles[1].Count());
+					}
+					break;
+
+				case Turn.Opponent:
+					turn = Turn.Player;
+					break;
+
+				default:
+					break;
+			}
+
 
 			base.Update(gameTime);
 		}
@@ -64,12 +93,35 @@ namespace Nim
 
 		public void Play()
 		{
+			Pile<Cookie> pile = new(4, new ChocolateChip());
+			board.piles.Add(pile);
+			pile = new(6, new Snickerdoodle());
+			board.piles.Add(pile);
 
+			turn = Turn.Player;
 		}
 
 		public void GameOver()
 		{
 
+		}
+		#endregion
+		#region PlayerController
+		public void TakeFromPile(int count, int pileIndex)
+		{
+			if (board.piles.Count <= pileIndex) return;
+			if (board.piles[pileIndex].IsEmpty()) return;
+
+			for (int i = 0; i < count; i++)
+			{
+				board.piles[pileIndex].RemoveFirst();
+				if (board.piles[pileIndex].IsEmpty())
+				{
+					break;
+				}
+			}
+
+			turn = Turn.Opponent;
 		}
 		#endregion
 	}
