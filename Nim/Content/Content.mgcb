@@ -1213,6 +1213,12 @@
 /processorParam:Quality=Best
 /build:DigitalUISounds/Slide_Two/Slide_Two_v3_wav.wav
 
+#begin MainTheme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:MainTheme.mp3
+
 #begin Sprites/ChocochipCookieSprite.png
 /importer:TextureImporter
 /processor:TextureProcessor

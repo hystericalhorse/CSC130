@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,14 @@ namespace Nim
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
-		private Texture2D Cookie;
+		private Texture2D OatmealCookie;
+		private Texture2D OatmealCookie2;
+		private Texture2D ChocolateChipCookie;
+		private Texture2D ChocolateChipCookie2;
+		private Texture2D Snickerdoodle;
+		private Texture2D Snickerdoodle2;
+
+		private Song MainTheme;
 
 		bool isPlaying = false;
 		enum Turn { Player, Opponent }
@@ -50,7 +58,16 @@ namespace Nim
 
 			// TODO: use this.Content to load your game content here
 
-			Cookie = Content.Load<Texture2D>("Sprites/OatmealCookie");
+			MainTheme = Content.Load<Song>("MainTheme");
+			MediaPlayer.Play(MainTheme);
+			MediaPlayer.IsRepeating = true;
+
+            OatmealCookie = Content.Load<Texture2D>("Sprites/OatmealCookie");
+            OatmealCookie2 = Content.Load<Texture2D>("Sprites/OatmealCookieBigger");
+			ChocolateChipCookie = Content.Load<Texture2D>("Sprites/ChocochipCookieSprite");
+			ChocolateChipCookie2 = Content.Load<Texture2D>("Sprites/ChocochipCookieSpriteSlightlyBigger");
+			Snickerdoodle = Content.Load<Texture2D>("Sprites/Snickerdoodle");
+			Snickerdoodle2 = Content.Load<Texture2D>("Sprites/SnickerDoodleBigger");
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -58,8 +75,11 @@ namespace Nim
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-			// TODO: Add your update logic here
-			switch (turn)
+            // TODO: Add your update logic here
+            if (MediaPlayer.State == MediaState.Stopped) MediaPlayer.Play(MainTheme);
+            else if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
+
+            switch (turn)
 			{
 				case Turn.Player:
 					if (Keyboard.GetState().IsKeyDown(Keys.Q))
@@ -94,7 +114,12 @@ namespace Nim
 
 			_spriteBatch.Begin();
 
-			_spriteBatch.Draw(Cookie, new Vector2(400, 240), Color.White);
+			_spriteBatch.Draw(OatmealCookie, new Vector2(1250, 800), Color.White);
+			_spriteBatch.Draw(OatmealCookie2, new Vector2(1025, 600), Color.White);
+			_spriteBatch.Draw(ChocolateChipCookie, new Vector2(1575, 800), Color.White);
+			_spriteBatch.Draw(ChocolateChipCookie2, new Vector2(1150, 300), Color.White);
+			_spriteBatch.Draw(Snickerdoodle, new Vector2(900, 800), Color.White);
+			_spriteBatch.Draw(Snickerdoodle2, new Vector2(1400, 600), Color.White);
 
 			_spriteBatch.End();
 
