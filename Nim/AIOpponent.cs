@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Specialized;
-using System.Threading;
-
-namespace Nim
+﻿namespace Nim
 {
     internal class AIOpponent
     {
