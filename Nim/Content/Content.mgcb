@@ -1219,7 +1219,7 @@
 /processorParam:Quality=Best
 /build:MainTheme.mp3
 
-#begin Sprites/ChocochipCookieSprite.png
+#begin Sprites/ChocolateChipCookie.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1229,9 +1229,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/ChocochipCookieSprite.png
+/build:Sprites/ChocolateChipCookie.png
 
-#begin Sprites/ChocochipCookieSpriteBigger.png
+#begin Sprites/LofthouseCookie.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1241,19 +1241,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/ChocochipCookieSpriteBigger.png
-
-#begin Sprites/ChocochipCookieSpriteSlightlyBigger.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/ChocochipCookieSpriteSlightlyBigger.png
+/build:Sprites/LofthouseCookie.png
 
 #begin Sprites/OatmealCookie.png
 /importer:TextureImporter
@@ -1267,7 +1255,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/OatmealCookie.png
 
-#begin Sprites/OatmealCookieBigger.png
+#begin Sprites/OatmealCookie.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1277,9 +1265,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/OatmealCookieBigger.png
+/build:Sprites/OatmealCookie.png
 
-#begin Sprites/OatmealCookieBiggest.png
+#begin Sprites/SnickerdoodleCookie.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1289,41 +1277,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/OatmealCookieBiggest.png
-
-#begin Sprites/SnickerDoodle.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/SnickerDoodle.png
-
-#begin Sprites/SnickerDoodleBigger.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/SnickerDoodleBigger.png
-
-#begin Sprites/SnickerDoodleBiggest.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/SnickerDoodleBiggest.png
+/build:Sprites/SnickerdoodleCookie.png
 

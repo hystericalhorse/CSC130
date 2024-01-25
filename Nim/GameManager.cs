@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using System;
+using System.Net;
 
 namespace Nim
 {
@@ -13,12 +14,7 @@ namespace Nim
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
-		private Texture2D OatmealCookie;
-		private Texture2D OatmealCookie2;
-		private Texture2D ChocolateChipCookie;
-		private Texture2D ChocolateChipCookie2;
-		private Texture2D Snickerdoodle;
-		private Texture2D Snickerdoodle2;
+		private List<Cookie> _cookies = new();
 
 		private Song MainTheme;
 
@@ -47,13 +43,14 @@ namespace Nim
 		{
 			// TODO: Add your initialization logic here
 
-			Play();
+			Setup();
 
 			base.Initialize();
 		}
 
 		protected override void LoadContent()
 		{
+			base.LoadContent();
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
@@ -61,13 +58,6 @@ namespace Nim
 			MainTheme = Content.Load<Song>("MainTheme");
 			MediaPlayer.Play(MainTheme);
 			MediaPlayer.IsRepeating = true;
-
-            OatmealCookie = Content.Load<Texture2D>("Sprites/OatmealCookie");
-            OatmealCookie2 = Content.Load<Texture2D>("Sprites/OatmealCookieBigger");
-			ChocolateChipCookie = Content.Load<Texture2D>("Sprites/ChocochipCookieSprite");
-			ChocolateChipCookie2 = Content.Load<Texture2D>("Sprites/ChocochipCookieSpriteSlightlyBigger");
-			Snickerdoodle = Content.Load<Texture2D>("Sprites/Snickerdoodle");
-			Snickerdoodle2 = Content.Load<Texture2D>("Sprites/SnickerDoodleBigger");
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -114,12 +104,21 @@ namespace Nim
 
 			_spriteBatch.Begin();
 
-			_spriteBatch.Draw(OatmealCookie, new Vector2(1250, 800), Color.White);
-			_spriteBatch.Draw(OatmealCookie2, new Vector2(1025, 600), Color.White);
-			_spriteBatch.Draw(ChocolateChipCookie, new Vector2(1575, 800), Color.White);
-			_spriteBatch.Draw(ChocolateChipCookie2, new Vector2(1150, 300), Color.White);
-			_spriteBatch.Draw(Snickerdoodle, new Vector2(900, 800), Color.White);
-			_spriteBatch.Draw(Snickerdoodle2, new Vector2(1400, 600), Color.White);
+			foreach (var pile in board.piles)
+				foreach (var cookie in pile.Get())
+				{
+					_spriteBatch.Draw(
+						cookie._texture, // Texture
+						cookie._drawLocation, // Draw Coordinate
+						null, // Source Rect.
+						Color.White, // Tint
+						0, // Rotation
+						Vector2.Zero, // Origin
+						Vector2.One * 2, // Scale
+						default,// Sprite Effects
+						1 //LayerDepth
+						);
+				}
 
 			_spriteBatch.End();
 
@@ -132,12 +131,36 @@ namespace Nim
 
 		}
 
-		public void Play()
+		public void Setup()
 		{
-			Pile<Cookie> pile = new(4, new ChocolateChip());
-			board.piles.Add(pile);
-			pile = new(6, new Snickerdoodle());
-			board.piles.Add(pile);
+			_cookies.Clear();
+			_cookies.Add(new ChocolateChip(Content.Load<Texture2D>("Sprites/ChocolateChipCookie")));
+			_cookies.Add(new Oatmeal(Content.Load<Texture2D>("Sprites/OatmealCookie")));
+			_cookies.Add(new Snickerdoodle(Content.Load<Texture2D>("Sprites/SnickerdoodleCookie")));
+			_cookies.Add(new Lofthouse(Content.Load<Texture2D>("Sprites/LofthouseCookie")));
+
+			Random r = new(Guid.NewGuid().GetHashCode());
+
+			int k = 1;
+			for (int i = 0; i < 3; i++) // n = 3; Create n piles.
+			{
+				r = new(Guid.NewGuid().GetHashCode()); // re-seed the random.
+				var cookie = _cookies[r.Next(0, _cookies.Count - 1)];
+				Pile<Cookie> pile = new(k*2, _cookies[r.Next(0, _cookies.Count - 1)]);
+				board.piles.Add(pile);
+				k += 2;
+			}
+
+			foreach (var pile in board.piles)
+			{
+				for (var i = 0; i < pile.Get().Count; i++)
+				{
+					var cookie = pile.Get()[i];
+					pile.Get()[i] = new(cookie); // Copy cookie into pile as new object to randomize the position.
+					r = new(Guid.NewGuid().GetHashCode());
+					cookie._drawLocation = new Vector2(r.Next(800, 1600), r.Next(300, 800)); // Random draw location for now.
+				}
+			}
 
 			turn = Turn.Player;
 		}
