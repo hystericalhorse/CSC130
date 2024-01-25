@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Nim
 		}
 	
 		List<T> pile = new();
+		public Vector2 pileCenter;
 	
 		public int Count() => pile.Count;
 	

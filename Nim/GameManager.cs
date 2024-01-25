@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using System;
 using System.Net;
+using System.Xml;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Nim
 {
@@ -19,8 +21,23 @@ namespace Nim
 		private Song MainTheme;
 
 		bool isPlaying = false;
-		enum Turn { Player, Opponent }
+		public enum Turn { Player, Opponent, GameOver }
 		Turn turn;
+		int plateSelected = -1;
+
+		private ButtonState lastButtonState;
+
+		Rectangle EndTurnButtonRect;
+		Texture2D EndTurnButton;
+
+		Rectangle PlateRect;
+		Rectangle PlateRect1;
+		Rectangle PlateRect2;
+		Texture2D PlateTexture;
+
+		string winnerMsg;
+
+		SpriteFont font;
 
 		AIOpponent opponent = new();
 		Board<Cookie> board = new();
@@ -32,18 +49,16 @@ namespace Nim
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 
-            if (GraphicsDevice == null) _graphics.ApplyChanges();
+			if (GraphicsDevice == null) _graphics.ApplyChanges();
 
-            _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-            _graphics.ApplyChanges();
-        }
+			_graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+			_graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+			_graphics.ApplyChanges();
+		}
 
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
-
-			Setup();
 
 			base.Initialize();
 		}
@@ -53,11 +68,39 @@ namespace Nim
 			base.LoadContent();
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			font = Content.Load<SpriteFont>("Font");
+
 			// TODO: use this.Content to load your game content here
+
+			EndTurnButton = Content.Load<Texture2D>("Sprites/EndTurnButton");
+			Vector2 pos = new Vector2(
+					GraphicsDevice.Viewport.Bounds.Width* 0.5f -EndTurnButton.Width * 0.5f * 0.5f,
+					GraphicsDevice.Viewport.Bounds.Height - EndTurnButton.Height * 0.5f
+					);
+			EndTurnButtonRect = new Rectangle((int)pos.X, (int)pos.Y, (int)(EndTurnButton.Width * 0.5),(int)( EndTurnButton.Height * 0.5f));
+
+			PlateTexture = Content.Load<Texture2D>("Sprites/Plate");
+			pos = new Vector2(
+					(GraphicsDevice.Viewport.Bounds.Width * 0.33f) - (PlateTexture.Width * 1.5f),
+					(GraphicsDevice.Viewport.Bounds.Height * 0.5f) - (PlateTexture.Height* 0.5f * 1.5f)
+					);
+			PlateRect = new((int)pos.X, (int)pos.Y, 768, 768);
+			pos = new Vector2(
+					(GraphicsDevice.Viewport.Bounds.Width * 0.66f) - (PlateTexture.Width * 1.5f),
+					(GraphicsDevice.Viewport.Bounds.Height * 0.5f) - (PlateTexture.Height * 0.5f * 1.5f)
+					);
+			PlateRect1 = new((int)pos.X, (int)pos.Y, 768, 768);
+			pos = new Vector2(
+					(GraphicsDevice.Viewport.Bounds.Width * 0.99f) - (PlateTexture.Width * 1.5f),
+					(GraphicsDevice.Viewport.Bounds.Height * 0.5f) - (PlateTexture.Height * 0.5f * 1.5f)
+					);
+			PlateRect2 = new((int)pos.X, (int)pos.Y, 768, 768);
 
 			MainTheme = Content.Load<Song>("MainTheme");
 			MediaPlayer.Play(MainTheme);
-			MediaPlayer.IsRepeating = true;
+			//MediaPlayer.IsRepeating = true;
+
+			Setup();
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -65,34 +108,64 @@ namespace Nim
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-            // TODO: Add your update logic here
-            if (MediaPlayer.State == MediaState.Stopped) MediaPlayer.Play(MainTheme);
-            else if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
+			// TODO: Add your update logic here
+			if (MediaPlayer.State == MediaState.Stopped) MediaPlayer.Play(MainTheme);
+			else if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
 
-            switch (turn)
+			switch (turn)
 			{
 				case Turn.Player:
-					if (Keyboard.GetState().IsKeyDown(Keys.Q))
+					MouseState mouse = Mouse.GetState();
+
+					if (mouse.LeftButton == ButtonState.Pressed && lastButtonState != ButtonState.Pressed)
 					{
-						TakeFromPile(1, 0);
-						Debug.WriteLine(board.piles[0].Count());
-					}
-					if (Keyboard.GetState().IsKeyDown(Keys.W))
-					{
-						TakeFromPile(1, 1);
-						Debug.WriteLine(board.piles[1].Count());
+						if (EndTurnButtonRect.Contains(mouse.Position))
+						{
+							NextTurn();
+							break;
+						}
+
+
+						if (plateSelected < 0)
+						{
+							if (PlateRect.Contains(mouse.Position))
+							{
+								plateSelected = 0;
+							}
+							if (PlateRect1.Contains(mouse.Position))
+							{
+								plateSelected = 1;
+							}
+							if (PlateRect2.Contains(mouse.Position))
+							{
+								plateSelected = 2;
+							}
+
+							TakeFromPile(1, plateSelected, false);
+						}
+						else
+						{
+							TakeFromPile(1, plateSelected, false);
+						}
 					}
 					break;
 
 				case Turn.Opponent:
-					turn = Turn.Player;
+					Debug.WriteLine("Opponent Turn");
+					NextTurn();
 					break;
 
 				default:
+					MouseState mous2e = Mouse.GetState();
+					if (mous2e.LeftButton == ButtonState.Pressed && lastButtonState != ButtonState.Pressed)
+					{
+						System.Environment.Exit(0);
+					}
 					break;
 			}
 
-
+			MouseState mouse1 = Mouse.GetState();
+			lastButtonState = mouse1.LeftButton;
 			base.Update(gameTime);
 		}
 
@@ -102,23 +175,42 @@ namespace Nim
 
 			// TODO: Add your drawing code here
 
-			_spriteBatch.Begin();
+			_spriteBatch.Begin(SpriteSortMode.BackToFront);
 
-			foreach (var pile in board.piles)
-				foreach (var cookie in pile.Get())
-				{
-					_spriteBatch.Draw(
-						cookie._texture, // Texture
-						cookie._drawLocation, // Draw Coordinate
-						null, // Source Rect.
-						Color.White, // Tint
-						0, // Rotation
-						Vector2.Zero, // Origin
-						Vector2.One * 2, // Scale
-						default,// Sprite Effects
-						1 //LayerDepth
-						);
-				}
+			switch (turn)
+			{
+				case Turn.GameOver:
+					_spriteBatch.DrawString(
+						font, 
+						winnerMsg + " Click to exit.", 
+						new (GraphicsDevice.Viewport.Bounds.Width * 0.5f, GraphicsDevice.Viewport.Bounds.Height * 0.5f),
+						Color.Red);
+					break;
+				default:
+					foreach (var pile in board.piles)
+						foreach (var cookie in pile.Get())
+						{
+							_spriteBatch.Draw(
+								cookie._texture, // Texture
+								cookie._drawLocation, // Draw Coordinate
+								null, // Source Rect.
+								Color.White, // Tint
+								0, // Rotation
+								Vector2.Zero, // Origin
+								Vector2.One * 2, // Scale
+								default,// Sprite Effects
+								0 //LayerDepth
+								);
+						}
+
+					_spriteBatch.Draw(EndTurnButton, EndTurnButtonRect, Color.White);
+
+					_spriteBatch.Draw(PlateTexture, PlateRect, null, Color.White, 0, Vector2.Zero, default, 1);
+					_spriteBatch.Draw(PlateTexture, PlateRect1, null, Color.White, 0, Vector2.Zero, default, 1);
+					_spriteBatch.Draw(PlateTexture, PlateRect2, null, Color.White, 0, Vector2.Zero, default, 1);
+					
+					break;
+			}
 
 			_spriteBatch.End();
 
@@ -141,40 +233,60 @@ namespace Nim
 
 			Random r = new(Guid.NewGuid().GetHashCode());
 
-			int k = 1;
+			int k = 2;
 			for (int i = 0; i < 3; i++) // n = 3; Create n piles.
 			{
 				r = new(Guid.NewGuid().GetHashCode()); // re-seed the random.
-				var cookie = _cookies[r.Next(0, _cookies.Count - 1)];
-				Pile<Cookie> pile = new(k*2, _cookies[r.Next(0, _cookies.Count - 1)]);
+				var cookie = _cookies[r.Next(0, _cookies.Count)];
+				Pile<Cookie> pile = new(k * 2, cookie);
 				board.piles.Add(pile);
-				k += 2;
+				k++;
 			}
+			//{X:76.80005 Y:416}
+			board.piles[0].pileCenter = PlateRect.Center.ToVector2();
+			//{X:921.6001 Y:416}
+			board.piles[1].pileCenter = PlateRect1.Center.ToVector2();
+			//{X:1766.3999 Y:416}
+			board.piles[2].pileCenter = PlateRect2.Center.ToVector2();
 
 			foreach (var pile in board.piles)
 			{
 				for (var i = 0; i < pile.Get().Count; i++)
 				{
 					var cookie = pile.Get()[i];
+					cookie._drawLocation = RandomInCircle(pile.pileCenter, 128); // Random draw location for now.
 					pile.Get()[i] = new(cookie); // Copy cookie into pile as new object to randomize the position.
-					r = new(Guid.NewGuid().GetHashCode());
-					cookie._drawLocation = new Vector2(r.Next(800, 1600), r.Next(300, 800)); // Random draw location for now.
 				}
 			}
 
 			turn = Turn.Player;
 		}
 
-		public void GameOver()
+		public void GameOver(Turn winner)
 		{
-
+			Debug.WriteLine(winner.ToString());
+			switch (winner)
+			{
+				case Turn.Player: winnerMsg = "You Win!"; break;
+				case Turn.Opponent: winnerMsg = "AI Wins!"; break;
+				default: break;
+			}
+			turn = Turn.GameOver;
 		}
 		#endregion
 		#region PlayerController
-		public void TakeFromPile(int count, int pileIndex)
+		public void TakeFromPile(int count, int pileIndex, bool endTurn = true)
 		{
-			if (board.piles.Count <= pileIndex) return;
-			if (board.piles[pileIndex].IsEmpty()) return;
+			if (board.piles.Count <= pileIndex || pileIndex < 0)
+			{
+				Content.Load<SoundEffect>("Nimsounds/Plate-03").Play();
+				return;
+			}
+			if (board.piles[pileIndex].IsEmpty())
+			{
+				Content.Load<SoundEffect>("Nimsounds/Plate-03").Play();
+				return;
+			}
 
 			for (int i = 0; i < count; i++)
 			{
@@ -185,7 +297,67 @@ namespace Nim
 				}
 			}
 
-			turn = Turn.Opponent;
+			Content.Load<SoundEffect>("Nimsounds/Monch-03").Play();
+			Debug.WriteLine(board.piles[0].Count() + " | " + board.piles[1].Count() + " | " + board.piles[2].Count());
+			if (endTurn) NextTurn();
+		}
+
+		public void NextTurn()
+		{
+			switch (turn)
+			{
+				case Turn.Opponent:
+					if (BoardEval())
+					{
+						GameOver(Turn.Opponent);
+						return;
+					}
+					turn = Turn.Player;
+					break;
+				case Turn.Player:
+					if (BoardEval())
+					{
+						GameOver(Turn.Player);
+						return;
+					}
+					plateSelected = -1;
+					turn = Turn.Opponent;
+					break;
+				default: break;
+			}
+		}
+
+		public bool BoardEval()
+		{
+			if (board == null || board.piles.Count < 1) return false;
+			for (int i = 0; i < board.piles.Count; i++)
+			{
+				if (board.piles[i].Get().Count > 1) return false;
+			}
+
+			foreach (var pile in board.piles)
+			{
+				if (pile.Get().Count > 1)
+					return false;
+				if (pile.IsEmpty()) continue;
+				foreach (var other in board.piles)
+				{
+					if (pile == other || other.IsEmpty()) continue;
+					if (pile.Get().Count == 1 && !other.IsEmpty())
+						return false;
+				}
+			}
+
+			return true;
+		}
+
+		public Vector2 RandomInCircle(Vector2 center, float radius)
+		{
+			var r = new Random(Guid.NewGuid().GetHashCode());
+			float angle = 2.0f * MathF.PI * r.Next();
+			var x = center.X + radius * MathF.Cos(angle);
+			var y = center.Y + radius * MathF.Sin(angle);
+			return new Vector2(x, y);
 		}
 		#endregion
 	}
