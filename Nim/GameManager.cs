@@ -13,6 +13,8 @@ namespace Nim
 {
 	public class GameManager : Game
 	{
+		public static GameManager instance;
+
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
@@ -24,6 +26,8 @@ namespace Nim
 		public enum Turn { Player, Opponent, GameOver }
 		Turn turn;
 		int plateSelected = -1;
+
+		bool opponentTurnTaken;
 
 		private ButtonState lastButtonState;
 
@@ -59,6 +63,8 @@ namespace Nim
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+
+			instance = this;
 
 			base.Initialize();
 		}
@@ -101,6 +107,8 @@ namespace Nim
 			//MediaPlayer.IsRepeating = true;
 
 			Setup();
+
+			opponent = new();
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -111,6 +119,8 @@ namespace Nim
 			// TODO: Add your update logic here
 			if (MediaPlayer.State == MediaState.Stopped) MediaPlayer.Play(MainTheme);
 			else if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
+
+			MediaPlayer.Volume = 0.1f;
 
 			switch (turn)
 			{
@@ -152,6 +162,8 @@ namespace Nim
 
 				case Turn.Opponent:
 					Debug.WriteLine("Opponent Turn");
+					if (!opponentTurnTaken)
+						opponentTurnTaken = opponent.OnTurn(ref board);
 					NextTurn();
 					break;
 
@@ -187,6 +199,12 @@ namespace Nim
 						Color.Red);
 					break;
 				default:
+					_spriteBatch.DrawString(
+						font,
+						"DON'T TAKE THE LAST COOKIE!",
+						new(20, 60),
+						Color.Red);
+
 					foreach (var pile in board.piles)
 						foreach (var cookie in pile.Get())
 						{
@@ -230,6 +248,9 @@ namespace Nim
 			_cookies.Add(new Oatmeal(Content.Load<Texture2D>("Sprites/OatmealCookie")));
 			_cookies.Add(new Snickerdoodle(Content.Load<Texture2D>("Sprites/SnickerdoodleCookie")));
 			_cookies.Add(new Lofthouse(Content.Load<Texture2D>("Sprites/LofthouseCookie")));
+			_cookies.Add(new Pretzel(Content.Load<Texture2D>("Sprites/Pretzel")));
+			_cookies.Add(new Checkerboard(Content.Load<Texture2D>("Sprites/CheckerboardCookie")));
+			_cookies.Add(new Thumbprint(Content.Load<Texture2D>("Sprites/ThumbprintCookie")));
 
 			Random r = new(Guid.NewGuid().GetHashCode());
 
@@ -279,11 +300,13 @@ namespace Nim
 		{
 			if (board.piles.Count <= pileIndex || pileIndex < 0)
 			{
+				plateSelected = -1;
 				Content.Load<SoundEffect>("Nimsounds/Plate-03").Play();
 				return;
 			}
 			if (board.piles[pileIndex].IsEmpty())
 			{
+				plateSelected = -1;
 				Content.Load<SoundEffect>("Nimsounds/Plate-03").Play();
 				return;
 			}
@@ -313,6 +336,7 @@ namespace Nim
 						return;
 					}
 					turn = Turn.Player;
+					opponentTurnTaken = false;
 					break;
 				case Turn.Player:
 					if (BoardEval())

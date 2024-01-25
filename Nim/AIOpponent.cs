@@ -1,8 +1,10 @@
-﻿namespace Nim
+﻿using System;
+
+namespace Nim
 {
-    internal class AIOpponent
+    public class AIOpponent
     {
-        public void OnTurn<T>(ref Board<T> board)
+        public bool OnTurn<T>(ref Board<T> board)
         {
             int[] heapSizes = new int[board.piles.Count];
             for (int i = 0; i < board.piles.Count; i++)
@@ -10,17 +12,19 @@
                 heapSizes[i] = board.piles[i].Count();
             }
 
-            StratCheck(heapSizes);
+            return StratCheck(heapSizes);
         }
 
-        private void StratCheck(int[] heapSizes)
+        private bool StratCheck(int[] heapSizes)
         {
-            JoeverCheck(ref heapSizes);
-            DelusionalCheck(ref heapSizes);
-            NimSumGameplay(ref heapSizes);
+            if (JoeverCheck(ref heapSizes)) return true;
+            if (DelusionalCheck(ref heapSizes)) return true;
+            if (NimSumGameplay(ref heapSizes)) return true;
+
+            return false;
         }
 
-        private void NimSumGameplay(ref int[] heapSizes)
+        private bool NimSumGameplay(ref int[] heapSizes)
         {
             int boardNimSum = heapSizes[0];
             for (int i = 1; i < heapSizes.Length; i++)
@@ -32,22 +36,21 @@
             {
                 heapNimSums[i] = heapSizes[i] ^ boardNimSum;
             }
-            bool foundGoodMove = false;
             for (int i = 0; i < heapSizes.Length; i++)
             {
                 if (heapNimSums[i] < heapSizes[i])
                 {
                     // Take cookies from index i to match the nim sum.
-                    foundGoodMove = true;
+                    GameManager.instance.TakeFromPile(boardNimSum, i);
+                    return true;
                 }
             }
-            if (!foundGoodMove)
-            {
-                RandomMove();
-            }
-        }
 
-        private void DelusionalCheck(ref int[] heapSizes)
+			RandomMove();
+			return false;
+		}
+
+        private bool DelusionalCheck(ref int[] heapSizes)
         {
             int twoPlusCount = 0;
             foreach (int count in heapSizes)
@@ -63,13 +66,17 @@
                 {
                     if (heapSizes[i] == 1)
                     {
-                        // Take all but one from pile of index i
-                    }
+						GameManager.instance.TakeFromPile(heapSizes[i]-1, i);
+                        return true;
+						// Take all but one from pile of index i
+					}
                 }
             }
+
+            return false;
         }
 
-        private void JoeverCheck(ref int[] heapSizes)
+        private bool JoeverCheck(ref int[] heapSizes)
         {
             int singleCountHeaps = 0;
             bool onlySingles = true;
@@ -84,15 +91,22 @@
                     onlySingles = false;
                 }
             }
+
             if (singleCountHeaps % 2 != 0 && onlySingles)
             {
                 RandomMove();
+                return true;
             }
+
+            return false;
         }
 
-        private void RandomMove()
+        private bool RandomMove()
         {
-            // I was going to have it randomly choose a pile and amount, but it took a long time to get the rest of this code.
-        }
+            Random r = new();
+			GameManager.instance.TakeFromPile(1, r.Next(0, 3));
+            return true;
+			// I was going to have it randomly choose a pile and amount, but it took a long time to get the rest of this code.
+		}
     }
 }
