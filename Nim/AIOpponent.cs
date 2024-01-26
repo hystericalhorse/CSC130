@@ -17,9 +17,9 @@ namespace Nim
 
         private bool StratCheck(int[] heapSizes)
         {
-            if (JoeverCheck(ref heapSizes)) return true;
-            if (DelusionalCheck(ref heapSizes)) return true;
             if (NimSumGameplay(ref heapSizes)) return true;
+            if (DelusionalCheck(ref heapSizes)) return true;
+            if (JoeverCheck(ref heapSizes)) return true;
 
             return false;
         }
