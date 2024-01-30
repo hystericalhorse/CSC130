@@ -32,13 +32,15 @@
 *.ide-wal
 *vsidx
 *.metadata.*.bin
+*.bin
+**/.vs/**/*.bin
 ipch/
 obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
-.vs/
 Ankh.NoLoad
+.vs/
 
 #Tooling
 _ReSharper*/
@@ -66,5 +68,3 @@ monodroid*.msi
 *.VC.opendb
 
 artifacts/
-*.bin
-*.bin
