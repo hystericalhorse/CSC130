@@ -4,14 +4,19 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pente
 {
-	public class Game1 : Game
+	public class Pente : Game
 	{
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
-		public Game1()
+		private readonly Color Affair = new Color(116,80,133);
+
+		bool FullscreenKeyState = false;
+
+		public Pente()
 		{
 			_graphics = new GraphicsDeviceManager(this);
+
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 		}
@@ -19,6 +24,11 @@ namespace Pente
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+
+			_graphics.PreferredBackBufferWidth = 1920;
+			_graphics.PreferredBackBufferHeight = 1080;
+			_graphics.IsFullScreen = false;
+			_graphics.ApplyChanges();
 
 			base.Initialize();
 		}
@@ -32,7 +42,7 @@ namespace Pente
 
 		protected override void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
 			// TODO: Add your update logic here
@@ -42,7 +52,7 @@ namespace Pente
 
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Affair);
 
 			// TODO: Add your drawing code here
 
