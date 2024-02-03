@@ -64,9 +64,10 @@ namespace Pente
 				if (rect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
 				{
 					if (this.piece == null)
+					{
 						this.piece = new(p);
-
-					return true;
+						return true;
+					}					
 				}
 
 				return false;
