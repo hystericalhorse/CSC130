@@ -14,13 +14,16 @@ namespace Pente
 		private readonly Color Affair = new Color(116,80,133);
 
 		private Board board;
-		public enum Turn { Player, Opponent };
+		public enum Turn { Player, PlayerTwo, AI };
 		private Turn turn;
 
 		public enum GameState { Menu, Pause, Play, Over };
 		private GameState gameState;
+		public enum Mode { PVP, PVC }
+		private Mode gameMode;
 
 		private bool mouseUp = true;
+		private double timer;
 
 		public Pente()
 		{
@@ -39,7 +42,8 @@ namespace Pente
 			_graphics.IsFullScreen = false;
 			_graphics.ApplyChanges();
 
-			NewGame();
+			NewGame(Mode.PVC);
+			//NewGame();
 
 			base.Initialize();
 		}
@@ -54,6 +58,8 @@ namespace Pente
 
 		protected override void Update(GameTime gameTime)
 		{
+			
+
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
@@ -69,21 +75,47 @@ namespace Pente
 					switch (turn)
 					{
 						case Turn.Player:
+							if (timer <= 0)
+							{
+								mouseUp = false;
+								PassTurn();
+							}
+
 							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)	
 							{
 								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle")), Mouse.GetState()))
 								{
 									mouseUp = false;
-									turn = Turn.Opponent;
+									PassTurn();
 								}
 								
 							}
 							break;
-						case Turn.Opponent:
-							board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), false));
-							turn = Turn.Player;
+						case Turn.AI:
+							if (timer <= 0)
+							{
+								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), false));
+								PassTurn();
+							}
 							break;
-					}	
+						case Turn.PlayerTwo:
+							if (timer <= 0)
+							{
+								mouseUp = false;
+								PassTurn();
+							}
+
+							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)
+							{
+								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle")), Mouse.GetState()))
+								{
+									mouseUp = false;
+									PassTurn();
+								}
+
+							}
+							break;
+					}
 					
 					break;
 				case GameState.Over:
@@ -91,8 +123,10 @@ namespace Pente
 			}
 
 			mouseUp = Mouse.GetState().LeftButton == ButtonState.Released;
-
 			base.Update(gameTime);
+
+			if (timer > 0)
+				timer -= gameTime.ElapsedGameTime.TotalSeconds;
 		}
 
 		protected override void Draw(GameTime gameTime)
@@ -110,13 +144,49 @@ namespace Pente
 		}
 
 		#region GameManager
-		public void NewGame()
+		public void NewGame(Mode mode = Mode.PVP)
 		{
 			board = new();
 			board.Clear(Content.Load<Texture2D>("Sprites/Default"));
 			turn = Turn.Player;
 
+			gameMode = mode;
+
 			gameState = GameState.Play;
+			NewTurn(Turn.Player);
+		}
+
+		public void PassTurn()
+		{
+			switch (gameMode)
+			{
+				default:
+				case Mode.PVC:
+					NewTurn((turn == Turn.Player) ? Turn.AI : Turn.Player);
+					break;
+				case Mode.PVP:
+					NewTurn((turn == Turn.Player) ? Turn.PlayerTwo : Turn.Player);
+					break;
+			}
+
+		}
+
+		public void NewTurn(Turn turn)
+		{
+			switch (turn)
+			{
+				case Turn.Player:
+				case Turn.PlayerTwo:
+					timer = 20;
+					this.turn = turn;
+					break;
+				case Turn.AI:
+					Random rnd = new();
+					timer = rnd.NextInt64(1, 4);
+					this.turn = turn;
+					break;
+			}
+
 		}
 
 		#endregion

@@ -2,14 +2,22 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Diagnostics;
-using System.Reflection.Metadata;
-using static Pente.Board;
 
 namespace Pente
 {
 	public class Board 
 	{
+		public Board()
+		{
+			board = new Space[boardSize, boardSize];
+		}
+
+		public Board(int size)
+		{
+			boardSize = size;
+			board = new Space[boardSize, boardSize];
+		}
+
 		public struct Piece
 		{
 			public Piece(Piece piece)
@@ -88,19 +96,20 @@ namespace Pente
 			public Vector2 origin;
 		}
 
-		public Space[,] board = new Space[19, 19];
+		public Space[,] board;
+		public int boardSize = 19;
 		public Texture2D Texture;
 
 		public void Clear(Texture2D texture)
 		{
-			int k = 19;
-			board = new Space[k, k];
+			//int k = 19;
+			board = new Space[boardSize, boardSize];
 			int vx = 504; int vy = 85;
 			Vector2 vec2 = new(vx, vy);
-			for (uint x = 0; x < k; x++)
+			for (uint x = 0; x < boardSize; x++)
 			{
 				vy = 85;
-				for (uint y = 0; y < k; y++)
+				for (uint y = 0; y < boardSize; y++)
 				{
 					vec2 = new(vx, vy);
 					board[x, y] = new(vec2);
