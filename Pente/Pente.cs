@@ -22,6 +22,8 @@ namespace Pente
 		public enum Mode { PVP, PVC }
 		private Mode gameMode;
 
+
+
 		private bool mouseUp = true;
 		private double timer;
 
@@ -42,7 +44,7 @@ namespace Pente
 			_graphics.IsFullScreen = false;
 			_graphics.ApplyChanges();
 
-			NewGame(Mode.PVC);
+			NewGame(Mode.PVP);
 			//NewGame();
 
 			base.Initialize();
@@ -83,10 +85,13 @@ namespace Pente
 
 							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)	
 							{
-								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle")), Mouse.GetState()))
+								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle"), Board.Owner.Player), Mouse.GetState(), out bool winningMove))
 								{
 									mouseUp = false;
-									PassTurn();
+									if (winningMove)
+										GameOver();
+									else
+										PassTurn();
 								}
 								
 							}
@@ -94,8 +99,11 @@ namespace Pente
 						case Turn.AI:
 							if (timer <= 0)
 							{
-								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), false));
-								PassTurn();
+								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.AI), out bool winningMove);
+								if (winningMove)
+									GameOver();
+								else
+									PassTurn();
 							}
 							break;
 						case Turn.PlayerTwo:
@@ -107,10 +115,13 @@ namespace Pente
 
 							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)
 							{
-								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle")), Mouse.GetState()))
+								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.PlayerTwo), Mouse.GetState(), out bool winningMove))
 								{
 									mouseUp = false;
-									PassTurn();
+									if(winningMove)
+										GameOver();
+									else
+										PassTurn();
 								}
 
 							}
@@ -146,7 +157,7 @@ namespace Pente
 		#region GameManager
 		public void NewGame(Mode mode = Mode.PVP)
 		{
-			board = new();
+			board = new(19);
 			board.Clear(Content.Load<Texture2D>("Sprites/Default"));
 			turn = Turn.Player;
 
@@ -168,7 +179,6 @@ namespace Pente
 					NewTurn((turn == Turn.Player) ? Turn.PlayerTwo : Turn.Player);
 					break;
 			}
-
 		}
 
 		public void NewTurn(Turn turn)
@@ -187,6 +197,20 @@ namespace Pente
 					break;
 			}
 
+		}
+
+		public void GameOver()
+		{
+			gameState = GameState.Over;
+
+			Debug.WriteLine($"Game Over. Winner:{turn}");
+			switch (turn)
+			{
+				case Turn.Player:
+				case Turn.PlayerTwo:
+				case Turn.AI:
+					break;
+			}
 		}
 
 		#endregion
