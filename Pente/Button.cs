@@ -26,6 +26,12 @@ namespace Pente
 			this.texture = texture;
 		}
 
+		~Button()
+		{
+			onClick = null;
+			onHover = null;
+		}
+
 		public void Draw(ref SpriteBatch spriteBatch)
 		{
 			if (texture == null) return;
@@ -34,7 +40,7 @@ namespace Pente
 
 		}
 
-		public void Update(ref MouseState mouse, bool mouseUp)
+		public void Update(MouseState mouse, bool mouseUp)
 		{ 
 			if (rect.Contains(mouse.Position))
 			{

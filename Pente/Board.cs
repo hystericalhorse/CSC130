@@ -249,8 +249,9 @@ namespace Pente
 					if ((next.X < 0) || (next.X > max) || (next.Y < 0) || (next.Y > max))
 						return false;
 
-					if (board[(int)next.X, (int)next.Y].piece.Value.owner == owner)
-						return true;
+					if (board[(int)next.X, (int)next.Y].piece != null)
+						if (board[(int)next.X, (int)next.Y].piece.Value.owner == owner)
+							return true;
 				}
 			}
 

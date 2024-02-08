@@ -44,7 +44,9 @@ namespace Pente
 			_graphics.IsFullScreen = false;
 			_graphics.ApplyChanges();
 
-			NewGame(Mode.PVP);
+
+			Menu();
+			//NewGame(Mode.PVP);
 			//NewGame();
 
 			base.Initialize();
@@ -55,7 +57,7 @@ namespace Pente
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
-			board.Texture = Content.Load<Texture2D>("Sprites/GameBoard");
+			
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -70,7 +72,7 @@ namespace Pente
 				default:
 					break;
 				case GameState.Menu:
-
+					newGame.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Pause:
 					break;
@@ -151,6 +153,7 @@ namespace Pente
 			{
 				default:
 				case GameState.Menu:
+					newGame.Draw(ref _spriteBatch);
 					break;
 				case GameState.Play:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
@@ -164,9 +167,20 @@ namespace Pente
 		}
 
 		#region GameManager
+
+		Button newGame;
+
+		public void Menu()
+		{
+			newGame = new(new(500, 500, 512, 512) ,Content.Load<Texture2D>("Sprites/Button"));
+			newGame.onClick += () => { NewGame(); };
+			gameState = GameState.Menu;
+		}
+
 		public void NewGame(Mode mode = Mode.PVP)
 		{
 			board = new(19);
+			board.Texture = Content.Load<Texture2D>("Sprites/GameBoard");
 			board.Clear(Content.Load<Texture2D>("Sprites/Default"));
 			turn = Turn.Player;
 
