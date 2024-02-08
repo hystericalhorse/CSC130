@@ -70,6 +70,7 @@ namespace Pente
 				default:
 					break;
 				case GameState.Menu:
+
 					break;
 				case GameState.Pause:
 					break;
@@ -146,8 +147,16 @@ namespace Pente
 
 			_spriteBatch.Begin(SpriteSortMode.BackToFront);
 			// TODO: Add your drawing code here
-			_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
-			board.Draw(ref _spriteBatch, Mouse.GetState().Position);
+			switch (gameState)
+			{
+				default:
+				case GameState.Menu:
+					break;
+				case GameState.Play:
+					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
+					board.Draw(ref _spriteBatch, Mouse.GetState().Position);
+					break;
+			}
 
 			_spriteBatch.End();
 
