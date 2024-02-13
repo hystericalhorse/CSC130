@@ -73,8 +73,10 @@ namespace Pente
 					break;
 				case GameState.Menu:
 					newGame.Update(Mouse.GetState(), mouseUp);
+					newGamePVAI.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Pause:
+					pauseTurn.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Play:
 					switch (turn)
@@ -154,10 +156,15 @@ namespace Pente
 				default:
 				case GameState.Menu:
 					newGame.Draw(ref _spriteBatch);
+					newGamePVAI.Draw(ref _spriteBatch);
 					break;
 				case GameState.Play:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
 					board.Draw(ref _spriteBatch, Mouse.GetState().Position);
+					break;
+				case GameState.Pause:
+					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
+					pauseTurn.Draw(ref _spriteBatch);
 					break;
 			}
 
@@ -169,11 +176,19 @@ namespace Pente
 		#region GameManager
 
 		Button newGame;
+		Button newGamePVAI;
+
+		Button pauseTurn;
 
 		public void Menu()
 		{
-			newGame = new(new(500, 500, 512, 512) ,Content.Load<Texture2D>("Sprites/Button"));
+			float posx = _graphics.PreferredBackBufferWidth * 0.5f;
+			newGame = new(new((int)posx - (int)(512 * 0.5f), 700, 512, 128) ,Content.Load<Texture2D>("Sprites/Button"));
 			newGame.onClick += () => { NewGame(); };
+
+			newGamePVAI = new(new((int)posx - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Button"));
+			newGame.onClick += () => { NewGame(Mode.PVC); };
+
 			gameState = GameState.Menu;
 		}
 
@@ -188,6 +203,11 @@ namespace Pente
 
 			gameState = GameState.Play;
 			NewTurn(Turn.Player);
+		}
+
+		public void PauseTurn()
+		{
+			gameState = GameState.Play;
 		}
 
 		public void PassTurn()
