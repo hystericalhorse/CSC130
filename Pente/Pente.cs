@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Pente
@@ -22,10 +23,17 @@ namespace Pente
 		public enum Mode { PVP, PVC }
 		private Mode gameMode;
 
+		int playerCaptures;
+		int playerTwoCaptures;
+		int computerCaptures;
 
+		SpriteFont arialFont;
 
 		private bool mouseUp = true;
 		private double timer;
+		private int halfScreenWidth;
+		private int halfScreenHeight;
+
 
 		public Pente()
 		{
@@ -44,6 +52,8 @@ namespace Pente
 			_graphics.IsFullScreen = false;
 			_graphics.ApplyChanges();
 
+			halfScreenWidth = (int) _graphics.PreferredBackBufferWidth / 2;
+			halfScreenHeight = (int) _graphics.PreferredBackBufferHeight / 2;
 
 			Menu();
 			//NewGame(Mode.PVP);
@@ -57,7 +67,13 @@ namespace Pente
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
-			
+			arialFont = Content.Load<SpriteFont>("Fonts/Arial");
+
+			//_spriteBatch.DrawString(
+			//			arial,
+			//			"Hello World",
+			//			new(GraphicsDevice.Viewport.Bounds.Width * 0.5f, GraphicsDevice.Viewport.Bounds.Height * 0.5f),
+			//			Color.Red);
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -72,11 +88,11 @@ namespace Pente
 				default:
 					break;
 				case GameState.Menu:
-					newGame.Update(Mouse.GetState(), mouseUp);
-					newGamePVAI.Update(Mouse.GetState(), mouseUp);
+					foreach (var button in MenuButtons)
+						button.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Pause:
-					pauseTurn.Update(Mouse.GetState(), mouseUp);
+					PauseTurnButton.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Play:
 					switch (turn)
@@ -90,7 +106,7 @@ namespace Pente
 
 							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)	
 							{
-								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle"), Board.Owner.Player), Mouse.GetState(), out bool winningMove))
+								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle"), Board.Owner.Player), Mouse.GetState(), out bool winningMove, ref playerCaptures))
 								{
 									mouseUp = false;
 									if (winningMove)
@@ -104,7 +120,7 @@ namespace Pente
 						case Turn.AI:
 							if (timer <= 0)
 							{
-								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.AI), out bool winningMove);
+								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.AI), out bool winningMove, ref computerCaptures);
 								if (winningMove)
 									GameOver();
 								else
@@ -120,7 +136,7 @@ namespace Pente
 
 							if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseUp)
 							{
-								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.PlayerTwo), Mouse.GetState(), out bool winningMove))
+								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.PlayerTwo), Mouse.GetState(), out bool winningMove, ref playerTwoCaptures))
 								{
 									mouseUp = false;
 									if(winningMove)
@@ -149,14 +165,14 @@ namespace Pente
 		{
 			GraphicsDevice.Clear(Affair);
 
-			_spriteBatch.Begin(SpriteSortMode.BackToFront);
+			_spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
 			// TODO: Add your drawing code here
 			switch (gameState)
 			{
 				default:
 				case GameState.Menu:
-					newGame.Draw(ref _spriteBatch);
-					newGamePVAI.Draw(ref _spriteBatch);
+					foreach (var button in MenuButtons)
+						button.Draw(ref _spriteBatch, ref arialFont);
 					break;
 				case GameState.Play:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
@@ -164,9 +180,15 @@ namespace Pente
 					break;
 				case GameState.Pause:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
-					pauseTurn.Draw(ref _spriteBatch);
+					PauseTurnButton.Draw(ref _spriteBatch);
 					break;
 			}
+
+			//_spriteBatch.DrawString(
+			//			arialFont,
+			//			"Hello World",
+			//			new(GraphicsDevice.Viewport.Bounds.Width * 0.5f, GraphicsDevice.Viewport.Bounds.Height * 0.5f),
+			//			Color.Red);
 
 			_spriteBatch.End();
 
@@ -175,19 +197,30 @@ namespace Pente
 
 		#region GameManager
 
-		Button newGame;
-		Button newGamePVAI;
+		Button NewGamePVPButton;
+		Button NewGamePVCButton;
 
-		Button pauseTurn;
+		Button SettingsButton;
+
+		Button PauseTurnButton;
+
+		List<Button> MenuButtons = new();
 
 		public void Menu()
 		{
-			float posx = _graphics.PreferredBackBufferWidth * 0.5f;
-			newGame = new(new((int)posx - (int)(512 * 0.5f), 700, 512, 128) ,Content.Load<Texture2D>("Sprites/Button"));
-			newGame.onClick += () => { NewGame(); };
+			NewGamePVPButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 700, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVP Game");
+			NewGamePVPButton.onClick += () => { NewGame(Mode.PVP); };
 
-			newGamePVAI = new(new((int)posx - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Button"));
-			newGame.onClick += () => { NewGame(Mode.PVC); };
+			NewGamePVCButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVC Game");
+			NewGamePVCButton.onClick += () => { NewGame(Mode.PVC); };
+
+			SettingsButton = new Button(new Rectangle(0, 0, 64, 64), Content.Load<Texture2D>("Sprites/Gear"));
+			SettingsButton.onClick += () => {  };
+
+			MenuButtons.Clear();
+			MenuButtons.Add(NewGamePVCButton);
+			MenuButtons.Add(NewGamePVPButton);
+			MenuButtons.Add(SettingsButton);
 
 			gameState = GameState.Menu;
 		}
@@ -200,6 +233,9 @@ namespace Pente
 			turn = Turn.Player;
 
 			gameMode = mode;
+			playerCaptures = 0;
+			playerTwoCaptures = 0;
+			computerCaptures = 0;
 
 			gameState = GameState.Play;
 			NewTurn(Turn.Player);

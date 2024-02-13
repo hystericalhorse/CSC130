@@ -135,7 +135,7 @@ namespace Pente
 			}
 		}
 
-		public bool TrySetPiece(Piece piece, MouseState mouse, out bool winningMove)
+		public bool TrySetPiece(Piece piece, MouseState mouse, out bool winningMove, ref int captures)
 		{
 			winningMove = false;
 			for (uint x = 0; x < board.GetLength(0); x++)
@@ -144,7 +144,7 @@ namespace Pente
 				{
 					if (board[x, y].TrySetPiece(piece, mouse))
 					{
-						winningMove = CheckWin(new(x,y));
+						winningMove = CheckWin(new(x,y), ref captures);
 						return true;
 					}
 				}
@@ -152,7 +152,7 @@ namespace Pente
 			return false;
 		}
 
-		public void RandomSetPiece(Piece piece, out bool winningMove)
+		public void RandomSetPiece(Piece piece, out bool winningMove, ref int captures)
 		{
 			Random rand = new();
 
@@ -169,7 +169,7 @@ namespace Pente
 				placed = board[x,y].TrySetOpponentPiece(piece);
 			}
 
-			winningMove = CheckWin(new(x,y));
+			winningMove = CheckWin(new(x,y), ref captures);
 		}
 
 		public static readonly Vector2 North = new(0,1);
@@ -186,7 +186,7 @@ namespace Pente
 			North, NorthEast, East, SouthEast
 		};
 
-		public bool CheckWin(Vector2 coord)
+		public bool CheckWin(Vector2 coord, ref int captures)
 		{
 			Owner owner = board[(int)coord.X, (int)coord.Y].piece.Value.owner;
 
@@ -194,17 +194,17 @@ namespace Pente
 			{
 				int count = 1;
 
-				CheckLine(coord, direction, owner, ref count);
-				CheckLine(coord, -direction, owner, ref count);
+				CheckLine(coord, direction, owner, ref count, ref captures);
+				CheckLine(coord, -direction, owner, ref count, ref captures);
 
-				if (count >= 5)
+				if (count >= 5 || captures >= 5)
 					return true;
 			}
 
 			return false;
 		}
 
-		public void CheckLine(Vector2 coord, Vector2 dir, Owner owner, ref int count)
+		public void CheckLine(Vector2 coord, Vector2 dir, Owner owner, ref int count, ref int captures)
 		{
 			var next = coord + dir;
 			var max = boardSize - 1;
@@ -220,14 +220,16 @@ namespace Pente
 				{
 					Debug.WriteLine(count);
 					count++;
-					CheckLine(next, dir, owner, ref count);
+					CheckLine(next, dir, owner, ref count, ref captures);
 				}
 				else
 				{
 					bool isCapture = CheckCapture(next, dir, owner);
 					if (isCapture)
 					{
-						Debug.WriteLine($"Capture:{board[(int)next.X, (int)next.Y].piece.Value.owner}");
+						captures++;
+						board[(int)next.X, (int)next.Y].piece = null;
+						board[(int)(next.X + dir.X), (int)(next.Y + dir.Y)].piece = null;
 					}
 				}
 			}
