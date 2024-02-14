@@ -69,6 +69,9 @@ namespace Pente
 			// TODO: use this.Content to load your game content here
 			arialFont = Content.Load<SpriteFont>("Fonts/Arial");
 
+			blueMarble = Content.Load<Texture2D>("Sprites/MarbleBlueSparkle");
+			redMarble = Content.Load<Texture2D>("Sprites/MarbleRedSparkle");
+				
 			//_spriteBatch.DrawString(
 			//			arial,
 			//			"Hello World",
@@ -151,6 +154,7 @@ namespace Pente
 					
 					break;
 				case GameState.Over:
+					RestartMenuButton.Update(Mouse.GetState(), mouseUp);
 					break;
 			}
 
@@ -160,6 +164,11 @@ namespace Pente
 			if (timer > 0)
 				timer -= gameTime.ElapsedGameTime.TotalSeconds;
 		}
+
+		// move these
+		private Texture2D blueMarble;
+		private Texture2D redMarble;
+		//
 
 		protected override void Draw(GameTime gameTime)
 		{
@@ -177,10 +186,15 @@ namespace Pente
 				case GameState.Play:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
 					board.Draw(ref _spriteBatch, Mouse.GetState().Position);
+
+					DrawGameUI();
 					break;
 				case GameState.Pause:
 					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
 					PauseTurnButton.Draw(ref _spriteBatch);
+					break;
+				case GameState.Over:
+					DrawGameOverUI();
 					break;
 			}
 
@@ -204,24 +218,34 @@ namespace Pente
 
 		Button PauseTurnButton;
 
+		Button RestartMenuButton;
+
 		List<Button> MenuButtons = new();
 
 		public void Menu()
 		{
-			NewGamePVPButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 700, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVP Game");
+			NewGamePVPButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVP Game");
 			NewGamePVPButton.onClick += () => { NewGame(Mode.PVP); };
 
-			NewGamePVCButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVC Game");
+			NewGamePVCButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 700, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVC Game");
 			NewGamePVCButton.onClick += () => { NewGame(Mode.PVC); };
 
 			SettingsButton = new Button(new Rectangle(0, 0, 64, 64), Content.Load<Texture2D>("Sprites/Gear"));
 			SettingsButton.onClick += () => {  };
+
+			RestartMenuButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "Return to Menu");
+			RestartMenuButton.onClick += () => { GoToMenu(); };
 
 			MenuButtons.Clear();
 			MenuButtons.Add(NewGamePVCButton);
 			MenuButtons.Add(NewGamePVPButton);
 			MenuButtons.Add(SettingsButton);
 
+			gameState = GameState.Menu;
+		}
+
+		public void GoToMenu()
+		{
 			gameState = GameState.Menu;
 		}
 
@@ -290,6 +314,102 @@ namespace Pente
 				case Turn.AI:
 					break;
 			}
+		}
+
+		#endregion
+
+		#region UI
+
+		public void DrawGameUI()
+		{
+			// turn information
+			int turnOffsetX = 1480;
+			int turnOffsetY = 25;
+			int timeroffsetY = 40;
+
+			//marble offsets
+			int marbleXOffset = 30;
+			int marbleYOffset = 100;
+			int marbleTxtOffsetX = 70; // 60
+			int marbleTxtOffsetY = 10;
+			int marble2OffsetY = 100;
+			int captureStringOffset = 60; // draw will turn this negative
+
+			_spriteBatch.Draw(blueMarble, new Rectangle(marbleXOffset, marbleYOffset, 64, 64), Color.White);
+			_spriteBatch.Draw(redMarble, new Rectangle(marbleXOffset, marbleYOffset + marble2OffsetY, 64, 64), Color.White);
+
+			string turnString = string.Empty;
+			string oppCaptures = string.Empty;
+			switch (gameMode)
+			{
+				case Mode.PVP:
+					turnString = (turn == Turn.Player) ? "Player One's turn" : "Player Two's turn";
+					oppCaptures = "X " + playerTwoCaptures;
+					break;
+				case Mode.PVC:
+					turnString = (turn == Turn.Player) ? "Player One's turn" : "Computer's turn";
+					oppCaptures = "X " + computerCaptures;
+					break;
+			}
+
+			// draw string for blue marble
+			_spriteBatch.DrawString(
+				arialFont,
+				oppCaptures,
+				new(marbleXOffset + marbleTxtOffsetX, marbleYOffset + marbleTxtOffsetY),
+				Color.White
+				);
+
+			// draw string for red marble
+			_spriteBatch.DrawString(
+				arialFont,
+				"X " + playerCaptures,
+				new(marbleXOffset + marbleTxtOffsetX, marbleYOffset + marbleTxtOffsetY + marble2OffsetY),
+				Color.White
+				);
+
+			_spriteBatch.DrawString(
+				arialFont,
+				"Captures",
+				new(marbleXOffset, marbleYOffset - captureStringOffset),
+				Color.White
+				);
+
+			_spriteBatch.DrawString(
+				arialFont,
+				turnString,
+				new(turnOffsetX, turnOffsetY),
+				Color.White
+				);
+
+			_spriteBatch.DrawString(
+				arialFont,
+				(turn == Turn.AI) ? "" : "Time Remaining: " + string.Format("{0:0}", timer),
+				new(turnOffsetX, turnOffsetY + timeroffsetY),
+				Color.White
+				);
+		}
+
+		public void DrawGameOverUI()
+		{
+			string winnerText = string.Empty;
+
+			switch (turn)
+			{
+				case Turn.Player: winnerText = "Player One Wins"; break;
+				case Turn.AI: winnerText = "Computer Wins"; break;
+				case Turn.PlayerTwo: winnerText = "Player Two Wins"; break;
+			}
+
+			_spriteBatch.DrawString(
+				arialFont,
+				winnerText,
+				new (halfScreenWidth - 165, halfScreenHeight - 100),
+				Color.White
+				);
+
+			RestartMenuButton.Draw(ref _spriteBatch);
+			RestartMenuButton.Draw(ref _spriteBatch, ref arialFont);
 		}
 
 		#endregion
