@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,6 +30,8 @@ namespace Pente
 		int computerCaptures;
 
 		SpriteFont arialFont;
+
+		Song KevinMacLeod;
 
 		private bool mouseUp = true;
 		private double timer;
@@ -62,6 +66,8 @@ namespace Pente
 			//NewGame(Mode.PVP);
 			//NewGame();
 
+			MediaPlayer.IsRepeating = true;
+
 			base.Initialize();
 		}
 
@@ -74,7 +80,8 @@ namespace Pente
 
 			blueMarble = Content.Load<Texture2D>("Sprites/MarbleBlueSparkle");
 			redMarble = Content.Load<Texture2D>("Sprites/MarbleRedSparkle");
-				
+
+			KevinMacLeod = Content.Load<Song>("Audio/sovereign");
 			//_spriteBatch.DrawString(
 			//			arial,
 			//			"Hello World",
@@ -115,6 +122,7 @@ namespace Pente
 							{
 								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleBlueSparkle"), Board.Owner.Player), Mouse.GetState(), out bool winningMove, ref playerCaptures))
 								{
+									Content.Load<SoundEffect>("Audio/place_piece").Play();
 									mouseUp = false;
 									if (winningMove)
 										GameOver();
@@ -128,6 +136,7 @@ namespace Pente
 							if (timer <= 0)
 							{
 								board.RandomSetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.AI), out bool winningMove, ref computerCaptures);
+								Content.Load<SoundEffect>("Audio/place_piece").Play();
 								if (winningMove)
 									GameOver();
 								else
@@ -145,6 +154,7 @@ namespace Pente
 							{
 								if (board.TrySetPiece(new(Content.Load<Texture2D>("Sprites/MarbleRedSparkle"), Board.Owner.PlayerTwo), Mouse.GetState(), out bool winningMove, ref playerTwoCaptures))
 								{
+									Content.Load<SoundEffect>("Audio/place_piece").Play();
 									mouseUp = false;
 									if(winningMove)
 										GameOver();
@@ -235,6 +245,8 @@ namespace Pente
 		Textbox BoardSizeTextbox;
 		public void Menu()
 		{
+			MediaPlayer.Stop();
+
 			NewGamePVPButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVP Game");
 			NewGamePVPButton.onClick += () => { NewGame(Mode.PVP); };
 
@@ -250,7 +262,6 @@ namespace Pente
 			MenuButtons.Add(NewGamePVCButton);
 			MenuButtons.Add(NewGamePVPButton);
 			MenuButtons.Add(SettingsButton);
-
 
 			gameState = GameState.Menu;
 		}
@@ -288,6 +299,7 @@ namespace Pente
 			computerCaptures = 0;
 
 			gameState = GameState.Play;
+			MediaPlayer.Play(KevinMacLeod);
 			NewTurn(Turn.Player);
 		}
 
