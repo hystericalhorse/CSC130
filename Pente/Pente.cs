@@ -34,6 +34,7 @@ namespace Pente
 		private int halfScreenWidth;
 		private int halfScreenHeight;
 
+		private int currentBoardSize = 19;
 
 		public Pente()
 		{
@@ -55,7 +56,9 @@ namespace Pente
 			halfScreenWidth = (int) _graphics.PreferredBackBufferWidth / 2;
 			halfScreenHeight = (int) _graphics.PreferredBackBufferHeight / 2;
 
+			currentBoardSize = 19;
 			Menu();
+
 			//NewGame(Mode.PVP);
 			//NewGame();
 
@@ -81,8 +84,6 @@ namespace Pente
 
 		protected override void Update(GameTime gameTime)
 		{
-			
-
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
@@ -95,9 +96,12 @@ namespace Pente
 						button.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Pause:
-					PauseTurnButton.Update(Mouse.GetState(), mouseUp);
+					SettingsButton.Update(Mouse.GetState(), mouseUp);
+					foreach (var button in boardSizeButtons)
+						button.Update(Mouse.GetState(), mouseUp);
 					break;
 				case GameState.Play:
+					ReturnToMenuButton.Update(Mouse.GetState(), mouseUp);
 					switch (turn)
 					{
 						case Turn.Player:
@@ -174,7 +178,7 @@ namespace Pente
 		{
 			GraphicsDevice.Clear(Affair);
 
-			_spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+			_spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp);
 			// TODO: Add your drawing code here
 			switch (gameState)
 			{
@@ -182,16 +186,24 @@ namespace Pente
 				case GameState.Menu:
 					foreach (var button in MenuButtons)
 						button.Draw(ref _spriteBatch, ref arialFont);
+
+					BoardSizeTextbox.Draw(ref _spriteBatch, ref arialFont);
 					break;
 				case GameState.Play:
-					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
+					//_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
 					board.Draw(ref _spriteBatch, Mouse.GetState().Position);
+					ReturnToMenuButton.Draw(ref _spriteBatch, ref arialFont);
 
 					DrawGameUI();
 					break;
 				case GameState.Pause:
-					_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
-					PauseTurnButton.Draw(ref _spriteBatch);
+					//_spriteBatch.Draw(board.Texture, board.Texture.Bounds, Color.White);
+					//PauseTurnButton.Draw(ref _spriteBatch);
+
+					SettingsButton.Draw(ref _spriteBatch);
+					foreach (var button in boardSizeButtons)
+						button.Draw(ref _spriteBatch, ref arialFont);
+
 					break;
 				case GameState.Over:
 					DrawGameOverUI();
@@ -216,12 +228,11 @@ namespace Pente
 
 		Button SettingsButton;
 
-		Button PauseTurnButton;
-
 		Button RestartMenuButton;
 
 		List<Button> MenuButtons = new();
 
+		Textbox BoardSizeTextbox;
 		public void Menu()
 		{
 			NewGamePVPButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "New PVP Game");
@@ -231,30 +242,45 @@ namespace Pente
 			NewGamePVCButton.onClick += () => { NewGame(Mode.PVC); };
 
 			SettingsButton = new Button(new Rectangle(0, 0, 64, 64), Content.Load<Texture2D>("Sprites/Gear"));
-			SettingsButton.onClick += () => {  };
+			SettingsButton.onClick += () => { Settings(); };
 
-			RestartMenuButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "Return to Menu");
-			RestartMenuButton.onClick += () => { GoToMenu(); };
+			BoardSizeTextbox = new($"Board Size: {currentBoardSize}", new(64 + 32, 10));
 
 			MenuButtons.Clear();
 			MenuButtons.Add(NewGamePVCButton);
 			MenuButtons.Add(NewGamePVPButton);
 			MenuButtons.Add(SettingsButton);
 
+
 			gameState = GameState.Menu;
 		}
 
 		public void GoToMenu()
 		{
-			gameState = GameState.Menu;
+			Console.WriteLine($"{currentBoardSize}");
+			Menu();
 		}
 
+		Button ReturnToMenuButton;
 		public void NewGame(Mode mode = Mode.PVP)
 		{
-			board = new(19);
+			board = new(currentBoardSize, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
 			board.Texture = Content.Load<Texture2D>("Sprites/GameBoard");
 			board.Clear(Content.Load<Texture2D>("Sprites/Default"));
+
+			board.BoardSlices["top_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_t");
+			board.BoardSlices["right_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_r");
+			board.BoardSlices["left_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_l");
+			board.BoardSlices["bottom_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_b");
+			board.BoardSlices["middle_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_m");
+			board.BoardSlices["top_left_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_tl");
+			board.BoardSlices["top_right_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_tr");
+			board.BoardSlices["bottom_left_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_bl");
+			board.BoardSlices["bottom_right_slice"] = Content.Load<Texture2D>("Sprites/Board/grid_br");
 			turn = Turn.Player;
+
+			ReturnToMenuButton = new Button(new Rectangle(halfScreenWidth + 420, halfScreenHeight + 200, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "Return to Menu");
+			ReturnToMenuButton.onClick += () => { GoToMenu(); };
 
 			gameMode = mode;
 			playerCaptures = 0;
@@ -265,9 +291,55 @@ namespace Pente
 			NewTurn(Turn.Player);
 		}
 
-		public void PauseTurn()
+		List<Button> boardSizeButtons = new();
+		struct Textbox
 		{
-			gameState = GameState.Play;
+			public Textbox(string text, Vector2 location)
+			{
+				this.Text = text;
+				this.Location = location;
+			}
+
+			public string Text;
+			public Vector2 Location;
+
+			public void Draw(ref SpriteBatch spriteBatch, ref SpriteFont spriteFont)
+			{
+				spriteBatch.DrawString(spriteFont, Text, Location, Color.White);
+			}
+		}
+
+		public void Settings()
+		{
+			SettingsButton.onClick = null;
+			SettingsButton.onClick += () => { Menu(); };
+
+			boardSizeButtons.Clear();
+			
+			int h = 80; int w = 80;
+			int x = halfScreenWidth - (w * 7); int y = halfScreenHeight - h;
+
+			for (int i = 0; i < 16; i++)
+			{
+				Rectangle rect = new(x + (w * i), y, w, h);
+				int k = 9 + (i * 2);
+				Button button = new Button(rect, Content.Load<Texture2D>("Sprites/Square"), k.ToString());
+
+				button.onClick = () => {
+
+					SetBoardSize(k);
+					GoToMenu();
+				};
+
+				boardSizeButtons.Add(button);
+			}
+
+			gameState = GameState.Pause;
+		}
+
+		public void SetBoardSize(int i)
+		{
+			currentBoardSize = i;
 		}
 
 		public void PassTurn()
@@ -305,6 +377,9 @@ namespace Pente
 		public void GameOver()
 		{
 			gameState = GameState.Over;
+
+			RestartMenuButton = new Button(new Rectangle(halfScreenWidth - (int)(512 * 0.5f), 500, 512, 128), Content.Load<Texture2D>("Sprites/Square"), "Return to Menu");
+			RestartMenuButton.onClick += () => { GoToMenu(); };
 
 			Debug.WriteLine($"Game Over. Winner:{turn}");
 			switch (turn)

@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Pente
 {
@@ -14,9 +16,21 @@ namespace Pente
 			board = new Space[boardSize, boardSize];
 		}
 
-		public Board(int size)
+		public Board(int size, int width = 600, int height = 800)
 		{
 			boardSize = size;
+
+			this.width = width;
+			this.height = height;
+
+			s = (int) (height * 0.83333333333f); // size in pixels of board
+			//k = (int) ((height - s) * 0.5f); // 1/6 the size of the window vertical
+			k = (int) (height * 0.16666666666f); // 1/6 the size of the window vertical
+			r = (int) ((width - s) * 0.5f); // distance between edge of width and board start
+			
+			p = (s / (boardSize + 2)); // the size the image must be in order to fit the grid in the window
+			hp = (int)(p * (0.5f)); // half p
+
 			board = new Space[boardSize, boardSize];
 		}
 
@@ -47,16 +61,16 @@ namespace Pente
 
 			public Texture2D emptyTex = null;
 
-			public void Draw(ref SpriteBatch spriteBatch, Point mousePos)
+			public void Draw(ref SpriteBatch spriteBatch, Point mousePos, int size)
 			{
-				Rectangle rect = new(origin.ToPoint(), new(48));
+				Rectangle rect = new(origin.ToPoint(), new(size));
 				if (piece != null)
 				{
 					spriteBatch.Draw(
 					piece?._texture,
 					destinationRectangle: rect,
 					Color.White
-					);
+					);;
 				}
 				else
 				if (rect.Contains(mousePos))
@@ -69,14 +83,14 @@ namespace Pente
 				}
 			}
 
-			public bool TrySetPiece(Piece p, MouseState mouse)
+			public bool TrySetPiece(Piece piece, MouseState mouse, int size)
 			{
-				Rectangle rect = new(origin.ToPoint(), new(48));
+				Rectangle rect = new(origin.ToPoint(), new(size));
 				if (rect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
 				{
 					if (this.piece == null)
 					{
-						this.piece = new(p);
+						this.piece = new(piece);
 						return true;
 					}					
 				}
@@ -100,37 +114,175 @@ namespace Pente
 		}
 
 		public Space[,] board;
+		int width, height;
 		public int boardSize = 19;
 		public Texture2D Texture;
 
+		int s, k, r, p, hp;
+
+		public Dictionary<string, Texture2D> BoardSlices = new()
+		{
+			{ "top_slice", null },
+			{ "right_slice", null },
+			{ "bottom_slice", null },
+			{ "left_slice", null },
+			{ "middle_slice", null },
+			{ "top_right_slice", null },
+			{ "top_left_slice", null },
+			{ "bottom_right_slice", null },
+			{ "bottom_left_slice", null }
+		};
+
 		public void Clear(Texture2D texture)
 		{
-			//int k = 19;
 			board = new Space[boardSize, boardSize];
-			int vx = 504; int vy = 85;
+			int vx = r+hp; int vy = k+p;
 			Vector2 vec2 = new(vx, vy);
 			for (uint x = 0; x < boardSize; x++)
 			{
-				vy = 85;
+				vy = k;
 				for (uint y = 0; y < boardSize; y++)
 				{
 					vec2 = new(vx, vy);
 					board[x, y] = new(vec2);
 					board[x, y].emptyTex = texture;
-					vy += 48;
+					vy += p;
 				}
 
-				vx += 48;
+				vx += p;
 			}
 		}
 
 		public void Draw(ref SpriteBatch spriteBatch, Point mousePos)
 		{
+			//s = (int) (height * 0.666f); // size in pixels of board
+			//k = (int) ((height - s) * 0.5f); // 1/6 the size of the window vertical
+			//r = (int) ((width - s) * 0.5f); // distance between edge of width and board start
+			//
+			//p = (int)(s / (boardSize + 2)); // the size the image must be in order to fit the grid in the window
+			//hp = (int)(p * (0.5f)); // half p
+
+			Point topLeft = new Point(r - hp, k - p); // topLeft Position of the board, given the rect is anchored at the top left
+			Point topRight = new Point(r + (p * boardSize) + hp, k - p);
+			Point bottomLeft = new Point(r - hp, k + (p * boardSize));
+			Point bottomRight = new Point(r + (p * boardSize) + hp, k + (p * boardSize));
+
+			spriteBatch.Draw(
+					BoardSlices["top_left_slice"],
+					destinationRectangle: new Rectangle(topLeft, new(p,p)),
+					Color.White
+					);
+			spriteBatch.Draw(
+					BoardSlices["top_right_slice"],
+					destinationRectangle: new Rectangle(topRight, new(p, p)),
+					Color.White
+					);
+			spriteBatch.Draw(
+					BoardSlices["bottom_left_slice"],
+					destinationRectangle: new Rectangle(bottomLeft, new(p, p)),
+					Color.White
+					);
+			spriteBatch.Draw(
+					BoardSlices["bottom_right_slice"],
+					destinationRectangle: new Rectangle(bottomRight, new(p, p)),
+					Color.White
+					);
+
+			int ex = r + hp;
+			int ey = k;
+
+			for (uint x = 0; x < boardSize; x++)
+			{
+				for (uint y = 0; y < boardSize; y++)
+				{
+					Rectangle rect = new((int)(ex + (x*p)), (int)(ey + (y*p)), p, p);
+
+					//_spriteBatch.Draw(
+					//			cookie._texture, // Texture
+					//			cookie._drawLocation, // Draw Coordinate
+					//			null, // Source Rect.
+					//			Color.White, // Tint
+					//			0, // Rotation
+					//			Vector2.Zero, // Origin
+					//			Vector2.One * 2, // Scale
+					//			default,// Sprite Effects
+					//			0 //LayerDepth
+					//			);
+
+					spriteBatch.Draw(
+					BoardSlices["middle_slice"],
+					destinationRectangle: rect,
+					Color.White
+					);
+
+					//spriteBatch.Draw(
+					//BoardSlices["middle_slice"],
+					//new Vector2((int)(ex + (x * p)), (int)(ey + (y * p))),
+					//rect,
+					//Color.White,
+					//0,
+					//Vector2.Zero,
+					//Vector2.One,
+					//default,
+					//1
+					//);
+				}
+			}
+
+			ey = k - p;
+
+			for (uint x = 0; x < boardSize; x++)
+			{
+				Rectangle rect = new((int)(ex + (x * p)), ey, p, p);
+
+				spriteBatch.Draw(
+				BoardSlices["top_slice"],
+				destinationRectangle: rect,
+				Color.White
+				);
+			}
+
+			ey = k + (p * boardSize);
+			for (uint x = 0; x < boardSize; x++)
+			{
+				Rectangle rect = new((int)(ex + (x * p)), ey, p, p);
+
+				spriteBatch.Draw(
+				BoardSlices["bottom_slice"],
+				destinationRectangle: rect,
+				Color.White
+				);
+			}
+
+			ex = r - hp;
+			for (uint y = 0; y < boardSize; y++)
+			{
+				Rectangle rect = new(ex, (int)(k + (y * p)), p, p);
+
+				spriteBatch.Draw(
+				BoardSlices["left_slice"],
+				destinationRectangle: rect,
+				Color.White
+				);
+			}
+
+			ex = r + (p * boardSize) + hp;
+			for (uint y = 0; y < boardSize; y++)
+			{
+				Rectangle rect = new(ex, (int)(k + (y * p)), p, p);
+
+				spriteBatch.Draw(
+				BoardSlices["right_slice"],
+				destinationRectangle: rect,
+				Color.White
+				);
+			}
+
 			for (uint x = 0; x < board.GetLength(0); x++)
 			{
 				for (uint y = 0; y < board.GetLength(1); y++)
 				{
-					board[x, y].Draw(ref spriteBatch, mousePos);
+					board[x, y].Draw(ref spriteBatch, mousePos, p);
 				}
 			}
 		}
@@ -142,7 +294,7 @@ namespace Pente
 			{
 				for (uint y = 0; y < board.GetLength(1); y++)
 				{
-					if (board[x, y].TrySetPiece(piece, mouse))
+					if (board[x, y].TrySetPiece(piece, mouse, p))
 					{
 						winningMove = CheckWin(new(x,y), ref captures);
 						return true;
