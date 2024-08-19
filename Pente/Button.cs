@@ -61,7 +61,6 @@ namespace Pente
 		{ 
 			if (rect.Contains(mouse.Position))
 			{
-
 				if (mouse.LeftButton == ButtonState.Pressed && mouseUp)
 				{
 					onClick?.Invoke();

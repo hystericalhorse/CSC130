@@ -23,9 +23,9 @@ namespace Pente
 			this.width = width;
 			this.height = height;
 
-			s = (int) (height * 0.83333333333f); // size in pixels of board
+			s = (int) (height * 0.83333333333f); // size in pixels of board (~5/6 of the window vertical)
 			//k = (int) ((height - s) * 0.5f); // 1/6 the size of the window vertical
-			k = (int) (height * 0.16666666666f); // 1/6 the size of the window vertical
+			k = (int) (height - s) / 2; // 1/12 the size of the window vertical
 			r = (int) ((width - s) * 0.5f); // distance between edge of width and board start
 			
 			p = (s / (boardSize + 2)); // the size the image must be in order to fit the grid in the window

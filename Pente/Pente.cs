@@ -39,6 +39,7 @@ namespace Pente
 		private int halfScreenHeight;
 
 		private int currentBoardSize = 19;
+		private bool speedMode = false;
 
 		public Pente()
 		{
@@ -379,7 +380,8 @@ namespace Pente
 					break;
 				case Turn.AI:
 					Random rnd = new();
-					timer = rnd.NextInt64(1, 4);
+					if (!speedMode) timer = rnd.NextInt64(1, 4);
+					else timer = 0;
 					this.turn = turn;
 					break;
 			}
